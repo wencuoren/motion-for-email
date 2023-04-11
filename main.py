@@ -224,9 +224,14 @@ def main(_user, _passwd, min_1, max_1):
 #     return t
 def get_time():
     try:
+        headers = {
+        'Host': 'api.m.taobao.com',
+        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/109.0.0.0 Safari/537.36'
+        }
         url = "http://api.m.taobao.com/rest/api3.do?api=mtop.common.getTimestamp"
-        response = requests.get(url, headers=self.headers).json()
+        response = requests.get(url, headers=headers).json()
         t = response["data"]["t"]
+        t = [:10]
         return t
     except Exception as e:
         print(e)
